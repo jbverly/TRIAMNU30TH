@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101812">
-  <meta name="description" content="TRIAMNU — Amfractus: The Twisted Labyrinth. Enter the academy's Season 5 recruitment storybook.">
+  <meta name="theme-color" content="#0d140f">
+  <meta name="description" content="TRIAMNU — Amfractus: The Twisted Labyrinth. Season V Storybook.">
   <title>TRIAMNU — Amfractus: The Twisted Labyrinth</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,17 +13,15 @@
 
   <style>
     :root {
-      --night: #0b100d;
-      --forest: #142019;
-      --forest-light: #1d3024;
-      --parchment: #e8dcc0;
-      --parchment-dark: #c9b995;
-      --ink: #1a1b15;
-      --gold: #b89a5b;
-      --gold-bright: #e5cc8a;
-      --crimson: #8c3235;
-      --crimson-light: #a84346;
-      --muted: #a99f88;
+      --night: #090e0b;
+      --forest: #131f18;
+      --parchment: #ebe0c8;
+      --parchment-tint: #e2d4b5;
+      --ink: #221f18;
+      --ink-soft: #4e4636;
+      --gold: #a88746;
+      --gold-bright: #e6cc8c;
+      --crimson: #872b2e;
       --serif: "Cormorant Garamond", Georgia, serif;
       --display: "Cinzel Decorative", Georgia, serif;
       --ornate: "Pirata One", Georgia, serif;
@@ -31,15 +29,16 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       min-height: 100vh;
       margin: 0;
       overflow-x: hidden;
       color: var(--parchment);
       background:
-        radial-gradient(ellipse at 50% 35%, rgba(42, 65, 46, .34), transparent 48%),
-        radial-gradient(ellipse at 10% 90%, rgba(103, 45, 42, .12), transparent 40%),
-        linear-gradient(135deg, #080c09, #111a13 48%, #090d0a);
+        radial-gradient(circle at 50% 30%, rgba(44, 68, 48, 0.35), transparent 55%),
+        radial-gradient(circle at 15% 85%, rgba(110, 42, 42, 0.14), transparent 45%),
+        linear-gradient(160deg, #070b08, #101912 50%, #070a08);
       font-family: var(--serif);
       -webkit-font-smoothing: antialiased;
     }
@@ -50,726 +49,660 @@
       z-index: -1;
       pointer-events: none;
       content: "";
-      opacity: .16;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+      opacity: 0.15;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
     }
 
     button, a { -webkit-tap-highlight-color: transparent; }
     button { font: inherit; }
     a { color: inherit; }
 
-    /* Highlight & Bold Utilities */
-    strong, .txt-bold {
-      font-weight: 700;
-      color: #0d0e0b;
-    }
-    .hl-gold {
-      color: #6b4d00;
-      font-weight: 700;
-      background: linear-gradient(120deg, rgba(184, 154, 91, 0.25) 0%, rgba(184, 154, 91, 0.08) 100%);
-      padding: 0 4px;
-      border-radius: 2px;
-    }
-    .hl-crimson {
-      color: var(--crimson);
-      font-weight: 700;
-    }
-    .text-emphasis {
-      font-style: italic;
-      font-weight: 600;
-      color: #2c2519;
-    }
-
-    .ambient {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
+    .ambient { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
     .mist {
       position: absolute;
-      width: 65vw;
+      width: 60vw;
       height: 35vw;
-      min-height: 260px;
       border-radius: 50%;
-      filter: blur(70px);
-      opacity: .09;
-      background: #82927a;
-      animation: drift 18s ease-in-out infinite alternate;
+      filter: blur(80px);
+      opacity: 0.08;
+      background: #8b9c82;
+      animation: drift 20s ease-in-out infinite alternate;
     }
-    .mist.one { top: 12%; left: -22%; }
-    .mist.two { right: -25%; bottom: 4%; animation-delay: -8s; opacity: .06; }
+    .mist.one { top: 8%; left: -18%; }
+    .mist.two { right: -20%; bottom: 5%; animation-delay: -9s; }
     @keyframes drift {
-      from { transform: translate3d(-2%, 0, 0) scale(.9); }
-      to { transform: translate3d(12%, 8%, 0) scale(1.15); }
+      from { transform: translate3d(-2%, 0, 0) scale(0.95); }
+      to { transform: translate3d(10%, 6%, 0) scale(1.1); }
     }
 
     .embers { position: absolute; inset: 0; }
     .ember {
       position: absolute;
-      bottom: -12px;
+      bottom: -10px;
       width: 3px;
       height: 3px;
       border-radius: 50%;
       background: var(--gold-bright);
-      box-shadow: 0 0 10px 2px rgba(214, 189, 128, .5);
+      box-shadow: 0 0 8px 2px rgba(230, 204, 140, 0.55);
       opacity: 0;
-      animation: rise var(--duration, 12s) linear infinite;
+      animation: rise var(--duration, 13s) linear infinite;
       animation-delay: var(--delay, 0s);
       left: var(--left);
     }
     @keyframes rise {
-      0% { transform: translate3d(0, 0, 0) scale(.4); opacity: 0; }
-      12% { opacity: .65; }
-      80% { opacity: .35; }
-      100% { transform: translate3d(var(--sway, 25px), -110vh, 0) scale(1.2); opacity: 0; }
+      0% { transform: translate3d(0, 0, 0) scale(0.5); opacity: 0; }
+      15% { opacity: 0.7; }
+      85% { opacity: 0.3; }
+      100% { transform: translate3d(var(--sway, 25px), -108vh, 0) scale(1.1); opacity: 0; }
     }
 
     .site-shell {
       position: relative;
       z-index: 1;
-      width: min(1160px, calc(100% - 32px));
+      width: min(1100px, calc(100% - 32px));
       min-height: 100vh;
       margin: 0 auto;
-      padding: 24px 0 34px;
+      padding: 20px 0 32px;
       display: flex;
       flex-direction: column;
     }
 
-    /* REDESIGN HEADER - EYE CATCHING & BALANCED */
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-bottom: 24px;
-      padding: 14px 20px;
-      background: rgba(14, 22, 16, 0.65);
-      border: 1px solid rgba(184, 154, 91, 0.28);
-      border-radius: 6px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(184, 154, 91, 0.05);
-      backdrop-filter: blur(8px);
+      margin-bottom: 18px;
+      padding: 8px 4px;
     }
-    .seal {
-      display: inline-flex;
+    .brand-wrap {
+      display: flex;
       align-items: center;
-      gap: 14px;
-      color: var(--parchment);
+      gap: 12px;
     }
-    .seal-mark {
-      display: grid;
-      width: 34px;
-      height: 34px;
-      place-items: center;
-      border: 1px solid var(--gold);
+    .topbar-logo {
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      font: 20px/1 var(--ornate);
-      color: var(--gold-bright);
-      background: radial-gradient(circle, rgba(184, 154, 91, 0.2) 0%, rgba(10, 14, 10, 0.8) 100%);
-      box-shadow: 0 0 12px rgba(214, 189, 128, 0.25), inset 0 0 6px rgba(184, 154, 91, 0.4);
-      flex-shrink: 0;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .topbar:hover .seal-mark {
-      transform: scale(1.05);
-      box-shadow: 0 0 16px rgba(214, 189, 128, 0.4), inset 0 0 8px rgba(184, 154, 91, 0.6);
+      object-fit: contain;
+      border: 1px solid rgba(230, 204, 140, 0.45);
+      background: rgba(15, 24, 18, 0.75);
+      padding: 3px;
+      box-shadow: 0 0 15px rgba(230, 204, 140, 0.18);
     }
     .seal-title {
-      font: 700 clamp(11px, 1.3vw, 13px)/1.2 var(--display);
-      letter-spacing: .18em;
+      font: 700 clamp(12px, 1.4vw, 14px)/1.2 var(--display);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--parchment);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    .topbar-divider {
-      width: 1px;
-      height: 24px;
-      background: linear-gradient(180deg, transparent, rgba(184, 154, 91, 0.5), transparent);
-      margin: 0 8px;
+      color: var(--gold-bright);
     }
     .topbar-note {
-      text-align: right;
-      font: 600 clamp(9px, 1.1vw, 10.5px)/1.4 var(--display);
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font: italic 500 clamp(13px, 1.3vw, 15px)/1.3 var(--serif);
+      color: #b7ad96;
+      letter-spacing: 0.03em;
     }
 
     .book-stage {
       position: relative;
       width: 100%;
       margin: auto;
-      perspective: 1800px;
+      perspective: 2000px;
     }
     .book {
       position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 680px;
-      border: 1px solid rgba(184,154,91,.42);
-      border-radius: 5px 12px 12px 5px;
-      background: #211d15;
+      border-radius: 14px 18px 18px 14px;
+      background: #241d14;
+      padding: 10px;
       box-shadow:
-        0 35px 90px rgba(0,0,0,.62),
-        0 0 0 7px rgba(10,14,10,.7),
-        0 0 0 8px rgba(184,154,91,.13),
-        inset 0 0 35px rgba(0,0,0,.8);
-      transform-style: preserve-3d;
+        0 35px 85px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(184, 154, 91, 0.35),
+        inset 0 0 25px rgba(0, 0, 0, 0.85);
     }
     .book::before {
       position: absolute;
-      top: 0;
-      bottom: 0;
+      top: 10px;
+      bottom: 10px;
       left: 50%;
-      z-index: 5;
-      width: 25px;
+      z-index: 6;
+      width: 34px;
       content: "";
       transform: translateX(-50%);
-      background: linear-gradient(90deg, rgba(0,0,0,.24), rgba(0,0,0,.04) 35%, rgba(0,0,0,.3) 50%, rgba(0,0,0,.03));
-      pointer-events: none;
-    }
-    .book::after {
-      position: absolute;
-      inset: 9px;
-      z-index: 4;
-      border: 1px solid rgba(184,154,91,.2);
-      border-radius: 3px 9px 9px 3px;
-      content: "";
+      background: linear-gradient(
+        90deg,
+        rgba(30, 22, 12, 0) 0%,
+        rgba(25, 18, 10, 0.22) 38%,
+        rgba(15, 10, 5, 0.42) 50%,
+        rgba(25, 18, 10, 0.2) 62%,
+        rgba(30, 22, 12, 0) 100%
+      );
       pointer-events: none;
     }
 
     .page {
       position: relative;
       min-width: 0;
-      padding: clamp(28px, 4vw, 56px);
+      min-height: 660px;
+      padding: clamp(32px, 4.2vw, 52px);
       overflow: hidden;
       color: var(--ink);
+      display: flex;
+      flex-direction: column;
       background:
-        radial-gradient(ellipse at 15% 15%, rgba(255,255,255,.38), transparent 45%),
-        radial-gradient(ellipse at 90% 90%, rgba(112,83,46,.12), transparent 45%),
-        repeating-linear-gradient(0deg, rgba(80,60,35,.025) 0, rgba(80,60,35,.025) 1px, transparent 1px, transparent 4px),
+        radial-gradient(ellipse at 20% 15%, rgba(255, 252, 242, 0.48), transparent 50%),
+        radial-gradient(ellipse at 85% 88%, rgba(138, 108, 64, 0.16), transparent 50%),
         var(--parchment);
-      transition: opacity .35s ease, transform .55s cubic-bezier(.2,.75,.25,1);
+      transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .page-left {
-      border-radius: 4px 0 0 4px;
-      box-shadow: inset -16px 0 25px -22px rgba(0,0,0,.7);
+      border-radius: 10px 2px 2px 10px;
+      box-shadow: inset -14px 0 24px -18px rgba(45, 32, 15, 0.55);
     }
     .page-right {
-      border-radius: 0 9px 9px 0;
-      box-shadow: inset 16px 0 25px -22px rgba(0,0,0,.7);
+      border-radius: 2px 12px 12px 2px;
+      background-color: #e7dbc0;
+      box-shadow: inset 14px 0 24px -18px rgba(45, 32, 15, 0.55);
+    }
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(138, 111, 63, 0.24);
+      border-radius: 6px;
+      pointer-events: none;
     }
 
-    /* FLEXBOX CONTAINER UNTUK MEMASTIKAN PENOMORAN TIDAK MENIMPA PARAGRAF */
+    /* KONTROL SPACING HALAMAN YANG LEBIH LEGA */
     .page-content {
       position: relative;
-      z-index: 1;
-      height: 100%;
+      z-index: 2;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
     }
 
-    .page-kicker {
+    .page-body-center {
+      width: 100%;
+      flex: 1;
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 12px;
-      margin: 0 0 18px;
-      color: #614d2a;
-      font: 700 11px/1.2 var(--display);
-      letter-spacing: .22em;
-      text-transform: uppercase;
+      gap: 14px;
+      padding: 6px 0;
     }
-    .page-kicker::after {
-      width: 44px;
-      height: 1px;
-      background: #a58b57;
+
+    .chapter-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: #6e552c;
+      font: 700 10.5px/1 var(--display);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+    .chapter-tag::before,
+    .chapter-tag::after {
+      content: "✦";
+      font-size: 9px;
+      color: var(--gold);
+    }
+
+    .page-footer {
+      width: 100%;
+      margin-top: 8px;
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #756242;
+      font: italic 600 13px var(--serif);
+      border-top: 1px dashed rgba(138, 111, 63, 0.3);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+    .folio {
+      font: 700 10px var(--display);
+      letter-spacing: 0.18em;
+    }
+
+    /* ================= EFEK EMBOSS/DEBOSS MISTIS DI SEMUA HALAMAN (1 - 4) ================= */
+    .mystic-emboss {
+      color: #221a12;
+      text-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.78), 
+        0 -1px 1px rgba(78, 62, 42, 0.38);
+    }
+    
+    .mystic-emboss-sub {
+      color: #463823;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
+    }
+
+    /* ================= HALAMAN 1: SAMPUL DALAM & LOGO ================= */
+    .crest-frame {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 6px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, rgba(184, 154, 91, 0.22), rgba(184, 154, 91, 0.04) 70%);
+      border: 1.5px solid rgba(138, 111, 63, 0.55);
+      box-shadow: 0 8px 24px rgba(68, 50, 22, 0.12), inset 0 0 18px rgba(184, 154, 91, 0.2);
+    }
+    .crest-frame::before {
       content: "";
-      flex-shrink: 0;
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px dashed rgba(138, 111, 63, 0.5);
+    }
+    .triamnu-logo-img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      border-radius: 50%;
+      z-index: 2;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.18));
+    }
+    .crest-fallback {
+      font: 56px var(--ornate);
+      color: #6b4e23;
     }
 
-    /* FOOTER HALAMAN DENGAN SPACING STATIS */
-    .page-footer-container {
-      margin-top: 24px;
-      padding-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px dashed rgba(110, 88, 52, 0.25);
-    }
-    .page-number {
-      position: static; /* Mengubah absolute ke static agar tidak saling tabrakan */
-      color: #6d5b3d;
-      font: 700 11px var(--display);
-      letter-spacing: .15em;
-    }
-    .ornament {
-      color: #9a7c45;
-      font: 25px var(--ornate);
-      letter-spacing: .25em;
-    }
-    .small-caps {
-      color: #6e5936;
-      font: 700 11px var(--display);
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    /* Hero Left */
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
     .academy-name {
       margin: 0;
-      color: #161e16;
-      font: 900 clamp(26px, 3.2vw, 42px)/1.1 var(--display);
-      letter-spacing: .08em;
+      font: 900 clamp(28px, 3.2vw, 40px)/1.1 var(--display);
+      letter-spacing: 0.1em;
     }
     .academy-sub {
-      max-width: 280px;
-      margin: 10px 0 0;
-      color: #5c4e33;
-      font: 700 11px/1.6 var(--display);
-      letter-spacing: .15em;
+      margin: 0;
+      font: 700 10.5px/1.6 var(--display);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
-    .crest {
-      display: grid;
-      width: clamp(110px, 12vw, 145px);
-      height: clamp(110px, 12vw, 145px);
-      margin: 24px auto 20px;
-      place-items: center;
-      border: 1px solid rgba(122,91,47,.7);
-      outline: 1px solid rgba(122,91,47,.35);
-      outline-offset: 6px;
-      border-radius: 50%;
-      color: #614820;
-      background: radial-gradient(circle, rgba(184,154,91,.15), transparent 70%);
-      font: clamp(52px, 5vw, 68px) var(--ornate);
-      flex-shrink: 0;
-    }
-    .crest-caption {
-      margin: 0;
-      color: #5b4d33;
-      text-align: center;
-      font: 700 11px var(--display);
-      letter-spacing: .2em;
+    .motto-ribbon {
+      margin: 6px auto 0;
+      padding: 8px 20px;
+      border-top: 1px solid rgba(138, 111, 63, 0.35);
+      border-bottom: 1px solid rgba(138, 111, 63, 0.35);
+      font: italic 600 16px var(--serif);
+      letter-spacing: 0.05em;
     }
     .property-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      width: fit-content;
-      padding: 8px 0;
-      border-bottom: 1.5px solid rgba(122,91,47,.6);
-      color: #4a3a1f;
-      text-decoration: none;
-      font: 700 11px var(--display);
-      letter-spacing: .12em;
-      transition: color .2s ease, border-color .2s ease;
-    }
-    .property-link:hover { color: var(--crimson); border-color: var(--crimson); }
-
-    /* Hero Right */
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .hero-header-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      gap: 6px;
       margin-bottom: 8px;
-    }
-    .season-stamp {
-      align-self: flex-end;
-      padding: 7px 12px;
-      border: 1.5px solid var(--crimson);
-      color: var(--crimson);
-      background: rgba(140, 50, 53, 0.06);
-      transform: rotate(2deg);
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(138, 111, 63, 0.45);
+      background: rgba(255, 255, 255, 0.32);
+      color: #4b3b20;
+      text-decoration: none;
       font: 700 10px var(--display);
-      letter-spacing: .14em;
-      margin-bottom: 4px;
+      letter-spacing: 0.12em;
+      transition: all 0.25s ease;
     }
-    .hero-title {
-      margin: 20px 0 12px;
-      color: #1a241b;
-      font: clamp(34px, 4.5vw, 58px)/1.02 var(--ornate);
-      letter-spacing: .015em;
-    }
-    .hero-title span { display: block; color: var(--crimson); }
-    .hero-rule {
-      width: 80px;
-      height: 2px;
-      margin: 16px 0 20px;
-      background: linear-gradient(90deg, #9b7a42, transparent);
-    }
-    .hero-copy {
-      max-width: 420px;
-      margin: 0;
-      color: #383223;
-      font-size: clamp(17px, 1.5vw, 19px);
-      line-height: 1.6;
-      font-weight: 500;
-    }
-    .hero-question {
-      max-width: 420px;
-      margin: 18px 0 0;
-      color: #242217;
-      font-size: clamp(17px, 1.5vw, 19px);
-      font-weight: 600;
-      line-height: 1.55;
-    }
-    .hero-foot {
-      margin-top: 28px;
-      color: #594a2d;
-      font: 700 11px var(--display);
-      letter-spacing: .18em;
-      text-transform: uppercase;
+    .property-link:hover {
+      background: rgba(135, 43, 46, 0.1);
+      border-color: var(--crimson);
+      color: var(--crimson);
+      transform: translateY(-1px);
     }
 
-    /* Systems Spread */
-    .systems-page { background-color: #e2d5b7; }
+    /* ================= HALAMAN 2: PROLOG & TOMBOL POSTER ================= */
+    .story-arch {
+      width: 100%;
+      max-width: 215px;
+      height: 132px;
+      margin: 0 auto;
+      border-radius: 110px 110px 10px 10px;
+      overflow: hidden;
+      border: 1.5px solid rgba(138, 111, 63, 0.55);
+      box-shadow: 0 8px 20px rgba(40, 28, 12, 0.14);
+      position: relative;
+      background: #d8c8a6;
+    }
+    .story-arch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: multiply;
+      filter: contrast(1.06) sepia(0.15);
+    }
+    .wax-seal {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #a8383b, #6e1d20);
+      color: #f3e4c3;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font: 700 8px/1.1 var(--display);
+      letter-spacing: 0.08em;
+      box-shadow: 0 4px 12px rgba(70, 18, 20, 0.4), inset 0 0 8px rgba(0, 0, 0, 0.35);
+      border: 2px dashed rgba(243, 228, 195, 0.35);
+      transform: rotate(10deg);
+      z-index: 3;
+    }
+
+    .hero-title {
+      margin: 2px 0 0;
+      font: clamp(28px, 3.5vw, 40px)/1.05 var(--ornate);
+      text-align: center;
+    }
+    .hero-title span {
+      display: block;
+      margin-top: 2px;
+      color: var(--crimson);
+      font-size: 0.86em;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.45);
+    }
+
+    .story-prose {
+      margin: 0;
+      font-size: clamp(15.5px, 1.25vw, 17px);
+      line-height: 1.6;
+      text-align: left;
+    }
+    .story-prose::first-letter {
+      float: left;
+      font: 42px/0.85 var(--ornate);
+      color: var(--crimson);
+      padding: 4px 10px 0 0;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.55);
+    }
+    .story-riddle {
+      margin: 0;
+      padding: 4px 0 4px 14px;
+      border-left: 2px solid var(--gold);
+      font: italic 600 15.5px/1.5 var(--serif);
+      text-align: left;
+    }
+
+    /* TOMBOL POSTER GAYA GULUNGAN DONGENG */
+    .poster-scroll-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 6px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1.5px solid #8a6b32;
+      background: linear-gradient(180deg, rgba(255, 249, 235, 0.78) 0%, rgba(224, 206, 168, 0.85) 100%);
+      color: #2b2114;
+      text-decoration: none;
+      font: 700 10.5px/1 var(--display);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      box-shadow:
+        0 4px 12px rgba(68, 48, 18, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      transition: all 0.28s ease;
+    }
+    .poster-scroll-btn .scroll-icon {
+      color: var(--crimson);
+      font-size: 13px;
+    }
+    .poster-scroll-btn:hover {
+      border-color: var(--crimson);
+      color: var(--crimson);
+      background: linear-gradient(180deg, #fffaf0 0%, #ead9b7 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px rgba(135, 43, 46, 0.22);
+    }
+
+    /* ================= HALAMAN 3: EMPAT PILAR ================= */
     .section-title {
       margin: 0;
-      color: #162017;
-      font: 700 clamp(25px, 3vw, 36px)/1.15 var(--display);
+      font: 700 clamp(22px, 2.4vw, 30px)/1.18 var(--display);
     }
-    .section-intro {
-      max-width: 460px;
-      margin: 10px 0 18px;
-      color: #473e2d;
-      font-size: 16px;
-      line-height: 1.45;
-      font-weight: 500;
+    .section-lead {
+      margin: 0 0 4px;
+      font: italic 500 15.5px/1.45 var(--serif);
     }
-    .system-list { display: grid; gap: 8px; }
-    .system-card {
-      position: relative;
+
+    .pillar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       width: 100%;
-      padding: 10px 12px;
-      border: 1px solid rgba(110,88,52,.38);
-      background: rgba(255,255,255,.25);
+    }
+    .pillar-item {
+      width: 100%;
+      padding: 11px 14px;
+      border: none;
+      border-bottom: 1px dashed rgba(138, 111, 63, 0.42);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.22);
       color: var(--ink);
       text-align: left;
       cursor: pointer;
-      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      transition: all 0.25s ease;
     }
-    .system-card:hover, .system-card[aria-expanded="true"] {
-      border-color: rgba(120,59,61,.75);
-      background: rgba(255,255,255,.45);
-      transform: translateX(3px);
+    .pillar-item:hover,
+    .pillar-item[aria-expanded="true"] {
+      background: rgba(255, 255, 255, 0.5);
+      transform: translateX(4px);
     }
-    .system-card-top {
+    .pillar-head {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 10px;
     }
-    .system-name {
-      color: #1a241b;
-      font: 700 13.5px/1.3 var(--display);
-      letter-spacing: .04em;
+    .pillar-name {
+      font: 700 12.5px/1.35 var(--display);
+      letter-spacing: 0.04em;
     }
-    .system-index {
-      color: #614b24;
-      font: 700 13px var(--display);
-      flex-shrink: 0;
-    }
-    .system-summary {
+    .pillar-sub {
       display: block;
-      margin-top: 3px;
-      color: #4a4130;
-      font-size: 13.5px;
-      line-height: 1.35;
-      font-weight: 600;
+      margin-top: 2px;
+      font: italic 600 14px var(--serif);
     }
-    .system-detail {
+    .pill-badge {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--crimson);
+      color: #f7ebd2;
+      font: 700 8px var(--display);
+      letter-spacing: 0.08em;
+    }
+    .pillar-toggle {
+      font: 700 14px var(--display);
+      color: #7c6030;
+    }
+    .pillar-body {
       display: grid;
       grid-template-rows: 0fr;
-      transition: grid-template-rows .28s ease;
+      transition: grid-template-rows 0.28s ease;
     }
-    .system-detail > div { overflow: hidden; }
-    .system-card[aria-expanded="true"] .system-detail { grid-template-rows: 1fr; }
-    .system-detail p {
-      margin: 8px 0 0;
-      padding-top: 8px;
-      border-top: 1px solid rgba(110,88,52,.22);
-      color: #363023;
-      font-size: 14px;
-      line-height: 1.45;
-      font-weight: 500;
-    }
-    .active-tag {
-      padding: 2px 5px;
-      border: 1px solid var(--crimson);
-      color: var(--crimson);
-      font: 700 8.5px var(--display);
-      letter-spacing: .08em;
-      white-space: nowrap;
-      flex-shrink: 0;
-      background: rgba(140, 50, 53, 0.05);
-    }
-    .recruitment-note {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-left: 4px solid var(--crimson);
-      background: rgba(120,59,61,.09);
-    }
-    .recruitment-note h3 {
-      margin: 0 0 4px;
-      color: var(--crimson);
-      font: 700 11px var(--display);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-    .recruitment-note p {
-      margin: 0;
-      color: #302a1e;
-      font-size: 14px;
-      line-height: 1.45;
+    .pillar-body > div { overflow: hidden; }
+    .pillar-item[aria-expanded="true"] .pillar-body { grid-template-rows: 1fr; }
+    .pillar-body p {
+      margin: 8px 0 2px;
+      font-size: 14.5px;
+      line-height: 1.48;
     }
 
-    /* Invitation Spread & Solusi Overlap */
-    .invitation-page {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .oath-scroll {
+      margin-top: 6px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(135, 43, 46, 0.07);
+      border: 1px solid rgba(135, 43, 46, 0.25);
+      width: 100%;
+      text-align: left;
     }
-    .invitation-mark {
-      color: #856730;
-      font: 44px var(--ornate);
-      line-height: 1;
+    .oath-scroll strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--crimson);
+      font: 700 9.5px var(--display);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
     }
-    .invitation-title {
-      margin: 12px 0 8px;
-      color: #172218;
-      font: 700 clamp(26px, 3.2vw, 40px)/1.12 var(--display);
-    }
-    .invitation-copy {
-      max-width: 420px;
+    .oath-scroll p {
       margin: 0;
-      color: #3b3323;
-      font-size: clamp(16px, 1.4vw, 18px);
+      font-size: 14.5px;
+      line-height: 1.48;
+    }
+
+    /* ================= HALAMAN 4: EPILOG & KONTAK ================= */
+    .epilogue-art {
+      width: 106px;
+      height: 106px;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1.5px solid rgba(138, 111, 63, 0.5);
+      background: #d8c8a6;
+    }
+    .epilogue-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: multiply;
+    }
+    .epilogue-title {
+      margin: 2px 0 0;
+      text-align: center;
+      font: 700 clamp(22px, 2.6vw, 32px)/1.15 var(--display);
+    }
+    .epilogue-copy {
+      margin: 0 auto 4px;
+      max-width: 350px;
+      text-align: center;
+      font-size: 16px;
       line-height: 1.55;
     }
-    .contact-list { display: grid; gap: 10px; margin-top: 18px; }
-    .contact-card {
+
+    .grimm-links {
+      display: grid;
+      gap: 12px;
+      width: 100%;
+    }
+    .grimm-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      border: 1px solid rgba(110,88,52,.48);
-      color: #172218;
-      background: rgba(255,255,255,.28);
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(138, 111, 63, 0.45);
+      background: rgba(255, 255, 255, 0.34);
       text-decoration: none;
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      color: #192219;
+      transition: all 0.25s ease;
+      text-align: left;
     }
-    .contact-card:hover {
-      transform: translateY(-2px);
+    .grimm-btn:hover {
+      background: rgba(255, 255, 255, 0.65);
       border-color: var(--crimson);
-      background: rgba(255,255,255,.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(55, 40, 18, 0.12);
     }
-    .contact-card strong {
+    .grimm-btn strong {
       display: block;
       font: 700 11.5px var(--display);
-      letter-spacing: .08em;
-      color: #131c14;
+      letter-spacing: 0.08em;
     }
-    .contact-card span span {
+    .grimm-btn small {
       display: block;
       margin-top: 2px;
-      color: #574b33;
-      font-size: 13.5px;
-      font-weight: 600;
+      font: italic 600 14px var(--serif);
     }
-    .contact-arrow { color: #7a5c2b; font: 20px var(--ornate); flex-shrink: 0; }
-    
-    /* MODIFIKASI: Menambahkan margin bawah yang cukup agar tidak menimpa penomoran */
-    .copyright {
-      margin: 18px 0 0;
-      padding-top: 10px;
-      border-top: 1px solid rgba(110,88,52,.3);
-      color: #544b36;
-      font-size: 13px;
+    .grimm-quill {
+      font: 22px var(--ornate);
+      color: var(--crimson);
+    }
+
+    .copyright-note {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 12.5px;
       line-height: 1.45;
     }
 
-    .dark-panel {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 100%;
-      padding: 24px;
-      border: 1px solid rgba(184,154,91,.36);
-      color: var(--parchment);
-      background:
-        radial-gradient(ellipse at 50% 35%, rgba(52,78,56,.42), transparent 65%),
-        linear-gradient(145deg, #18241b, #0d140f 75%);
-      box-shadow: inset 0 0 35px rgba(0,0,0,.35);
-    }
-    .dark-panel .small-caps { color: var(--gold-bright); }
-    .labyrinth-art {
-      width: 100%;
-      max-width: 300px;
-      margin: 18px auto;
-      opacity: .85;
-    }
-    .dark-quote {
-      margin: 14px 0 0;
-      color: #e5d7b8;
-      font: italic 600 21px/1.45 var(--serif);
-      text-align: center;
-    }
-    .dark-quote span {
-      display: block;
-      margin-top: 10px;
-      color: var(--gold-bright);
-      font: 700 10px var(--display);
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-    .panel-bottom {
-      color: #9c987d;
-      font: 700 10px var(--display);
-      letter-spacing: .14em;
-      text-align: center;
-    }
-
+    /* NAVIGASI BAWAH */
     .book-nav {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 16px;
-      margin: 22px 0 0;
+      margin-top: 22px;
     }
     .nav-button {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      min-width: 120px;
-      padding: 10px 15px;
-      border: 1px solid rgba(184,154,91,.45);
-      border-radius: 2px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(230, 204, 140, 0.4);
+      background: rgba(15, 23, 17, 0.78);
       color: var(--gold-bright);
-      background: rgba(12,18,13,.68);
       cursor: pointer;
-      font: 700 11px var(--display);
-      letter-spacing: .12em;
+      font: 700 10.5px var(--display);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      transition: background .2s ease, border-color .2s ease, opacity .2s ease;
+      transition: all 0.25s ease;
     }
     .nav-button:hover:not(:disabled) {
+      background: rgba(42, 58, 44, 0.9);
       border-color: var(--gold-bright);
-      background: rgba(40,54,41,.85);
+      transform: translateY(-1px);
     }
-    .nav-button:disabled { opacity: .28; cursor: not-allowed; }
+    .nav-button:disabled { opacity: 0.3; cursor: not-allowed; }
     .page-indicator {
-      min-width: 82px;
-      color: #a99f88;
+      min-width: 80px;
       text-align: center;
+      color: #b7ad96;
       font: 700 11px var(--display);
-      letter-spacing: .16em;
+      letter-spacing: 0.16em;
     }
     .mobile-hint {
       display: none;
-      margin: 12px 0 0;
-      color: #817d6a;
+      margin-top: 10px;
       text-align: center;
-      font-size: 13px;
+      font: italic 14px var(--serif);
+      color: #938a75;
     }
 
-    .turning { animation: pageTurn .55s cubic-bezier(.2,.75,.25,1); }
+    .turning { animation: pageTurn 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
     @keyframes pageTurn {
-      0% { opacity: .45; transform: rotateY(-7deg) translateX(10px); }
-      100% { opacity: 1; transform: rotateY(0) translateX(0); }
+      0% { opacity: 0.5; transform: rotateY(-5deg) scale(0.99); }
+      100% { opacity: 1; transform: rotateY(0) scale(1); }
     }
 
-    /* Layout Tablet & Mobile Header */
     @media (max-width: 760px) {
-      .site-shell { width: min(620px, calc(100% - 24px)); padding-top: 16px; }
-      .topbar { margin-bottom: 15px; padding: 12px 14px; }
-      .topbar-divider { display: none; }
-      .book {
-        display: block;
-        min-height: 0;
-        border-radius: 5px 8px 8px 5px;
-      }
+      .site-shell { width: min(540px, calc(100% - 20px)); padding-top: 14px; }
+      .topbar { flex-direction: column; text-align: center; gap: 4px; }
+      .book { display: block; min-height: 0; border-radius: 14px; padding: 6px; }
       .book::before { display: none; }
-      .book::after { inset: 7px; border-radius: 3px 6px 6px 3px; }
-      .page {
-        min-height: 520px;
-        padding: 24px 20px 36px;
-        border-radius: 4px 7px 7px 4px;
+      .page { 
+        min-height: 610px; 
+        padding: 28px 20px; 
+        border-radius: 10px; 
       }
-      .page-right { display: none; }
-      .page-left { display: block; }
       .mobile-page { display: none; }
-      .mobile-page.is-active { display: block; }
-      .hero-left, .hero-right { min-height: 520px; }
-      .dark-panel { min-height: 440px; }
+      .mobile-page.is-active { display: flex; }
       .mobile-hint { display: block; }
-      .book-nav { gap: 10px; margin-top: 18px; }
-      .nav-button { min-width: 100px; padding: 9px 10px; font-size: 9px; }
-    }
-
-    /* Layar Mobile Di Bawah 480px */
-    @media (max-width: 480px) {
-      .site-shell { width: calc(100% - 16px); padding-top: 12px; }
-      .topbar {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 8px;
-        padding: 12px 10px;
-      }
-      .seal { flex-direction: column; gap: 6px; }
-      .topbar-note { text-align: center; font-size: 8.5px; }
-      .page { padding: 20px 14px 30px; min-height: auto; }
-      
-      .academy-name { font-size: clamp(20px, 6.5vw, 26px); }
-      .academy-sub { font-size: 9.5px; max-width: 100%; }
-      .hero-title { font-size: clamp(28px, 8.5vw, 36px); margin: 14px 0 10px; }
-      .section-title { font-size: clamp(22px, 6.5vw, 28px); }
-      .invitation-title { font-size: clamp(22px, 6.5vw, 28px); }
-      
-      .crest { width: 95px; height: 95px; font-size: 44px; margin: 16px auto 14px; }
-      
-      .system-card { padding: 10px; }
-      .system-card-top { align-items: flex-start; flex-direction: column; gap: 4px; }
-      .system-name { font-size: 13px; }
-      .system-summary { font-size: 13px; margin-top: 2px; }
-      .system-detail p { font-size: 13.5px; }
-      
-      .recruitment-note { padding: 12px; margin-top: 12px; }
-      .recruitment-note p { font-size: 13.5px; }
-
-      .contact-card { padding: 10px 12px; gap: 8px; }
-      .contact-card strong { font-size: 11px; }
-      .contact-card span span { font-size: 12px; }
-      
-      .copyright { margin-top: 12px; font-size: 12px; }
-      .page-footer-container { margin-top: 16px; padding-top: 8px; }
-      .page-number { font-size: 9.5px; }
-      .page-kicker { font-size: 9.5px; margin-bottom: 12px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
+      .wax-seal { width: 44px; height: 44px; font-size: 7px; top: 14px; right: 14px; }
     }
   </style>
 </head>
@@ -782,172 +715,215 @@
   </div>
 
   <main class="site-shell">
-    <!-- REDESIGNED HEADER -->
     <header class="topbar">
-      <div class="seal">
-        <span class="seal-mark">T</span>
+      <div class="brand-wrap">
+        <img
+          src="filter.png"
+          alt="Logo TRIAMNU"
+          class="topbar-logo"
+          onerror="this.style.display='none'"
+        >
         <span class="seal-title">Trisakti Akademi Militer Nusantara</span>
       </div>
-      <div class="topbar-divider" aria-hidden="true"></div>
-      <div class="topbar-note">An invitation beyond the known path<br>Recruitment archive · Season V</div>
+      <div class="topbar-note">Chronicle of Season V · The Twisted Labyrinth</div>
     </header>
 
-    <section class="book-stage" aria-label="TRIAMNU interactive recruitment storybook">
+    <section class="book-stage" aria-label="TRIAMNU recruitment storybook">
       <div class="book" id="storybook">
-        <!-- PAGE 1 -->
+
+        <!-- HALAMAN 1 -->
         <article class="page page-left mobile-page is-active" data-page="0">
-          <div class="page-content hero-left">
-            <div>
-              <p class="page-kicker">The academy · Est. in resolve</p>
-              <h1 class="academy-name">TRIAMNU</h1>
-              <p class="academy-sub">Trisakti Akademi Militer Nusantara</p>
-            </div>
-            <div>
-              <div class="crest" aria-hidden="true">✥</div>
-              <p class="crest-caption"><strong>Discipline</strong> · <strong>Honour</strong> · <strong>Brotherhood</strong></p>
-            </div>
-            <div>
-              <a class="property-link" href="https://drive.google.com/file/d/1XYHGPecy3ecZU8X7HKWF9gUSz6Z4XVSq/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">↗</span> Keterangan Hak Milik
-              </a>
-              <div class="page-footer-container">
-                <span class="page-number">01 / 04</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- PAGE 2 -->
-        <!-- PAGE 2 -->
-        <article class="page page-right mobile-page" data-page="1">
-          <div class="page-content hero-right">
-            <div class="hero-header-group">
-              <span class="season-stamp">SEASON V · RECRUITMENT OPEN</span>
-              <p class="page-kicker">A tale of paths untaken</p>
-            </div>
-            <div>
-              <h2 class="hero-title">Amfractus:<span>The Twisted<br>Labyrinth</span></h2>
-              <div class="hero-rule"></div>
-              <p class="hero-copy">
-                From the Latin root <em class="text-emphasis">anfractus</em> — winding paths, twists, spirals, and intricate bends — comes a labyrinth that refuses to reveal its secrets at first glance.
-              </p>
-              <p class="hero-question">
-                We challenge you to navigate the <strong class="hl-crimson">dark fairytale labyrinth</strong> of this season. Will you unravel its hidden paths to conquer it, or remain forever trapped within its depths?
-              </p>
-            </div>
-            <div>
-              <p class="hero-foot">Turn the page. The maze is waiting.</p>
-              <div class="page-footer-container">
-                <span class="page-number">02 / 04</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- PAGE 3 -->
-        <article class="page page-left systems-page mobile-page" data-page="2">
           <div class="page-content">
-            <div>
-              <p class="page-kicker">The order of the labyrinth</p>
-              <h2 class="section-title">Four pillars.<br>One academy.</h2>
-              <p class="section-intro">TRIAMNU is a premier RP military organization shaped by specialized <strong class="hl-gold">tactical and thematic systems</strong>.</p>
+            <p class="chapter-tag">Chapter I · The Academy</p>
 
-              <div class="system-list">
-                <button class="system-card" type="button" aria-expanded="false">
-                  <span class="system-card-top"><span class="system-name">01 · ABC System</span><span class="system-index">＋</span></span>
-                  <span class="system-summary">Attitude · Brain · Character</span>
-                  <span class="system-detail"><div><p>The foundation metrics of every member: the way you carry yourself, think through challenges, and shape your character.</p></div></span>
+            <div class="page-body-center">
+              <div class="crest-frame">
+                <img
+                  src="filter.png"
+                  alt="Emblem Resmi TRIAMNU"
+                  class="triamnu-logo-img"
+                  onerror="this.style.display='none'; document.getElementById('crestFallback').style.display='block';"
+                >
+                <span id="crestFallback" class="crest-fallback" style="display:none;">✥</span>
+              </div>
+
+              <h1 class="academy-name mystic-emboss">TRIAMNU</h1>
+              <p class="academy-sub mystic-emboss-sub">Trisakti Akademi Militer Nusantara</p>
+              <div class="motto-ribbon mystic-emboss-sub">Discipline · Honour · Brotherhood</div>
+            </div>
+
+            <div style="width:100%;">
+              <a class="property-link mystic-emboss-sub" href="https://drive.google.com/file/d/1XYHGPecy3ecZU8X7HKWF9gUSz6Z4XVSq/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                <span>↗</span> Keterangan Hak Milik
+              </a>
+              <div class="page-footer">
+                <span>Archive Vol. V</span>
+                <span class="folio">I / IV</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- HALAMAN 2 (DENGAN TOMBOL POSTER) -->
+        <article class="page page-right mobile-page" data-page="1">
+          <div class="wax-seal">SEASON<br>V</div>
+          <div class="page-content">
+            <div style="width:100%;">
+              <p class="chapter-tag">Prologue</p>
+            </div>
+
+            <div class="page-body-center" style="width:100%;">
+              <div class="story-arch">
+                <img src="labyrinth-gate.jpg" alt="Ilustrasi Gerbang Labirin Amfractus" onerror="this.parentElement.style.display='none'">
+              </div>
+
+              <h2 class="hero-title mystic-emboss">Amfractus:<span>The Twisted Labyrinth</span></h2>
+
+              <p class="story-prose mystic-emboss-sub">
+                Born from the Latin <em>anfractus</em>—winding paths and hidden spirals—lies a realm that never reveals its exit at first glance.
+              </p>
+              <p class="story-riddle mystic-emboss-sub">
+                “Will you unravel the dark fairytale maze of this season, or wander forever within its shadows?”
+              </p>
+
+              <!-- TOMBOL MENUJU GOOGLE DRIVE POSTER -->
+              <a class="poster-scroll-btn mystic-emboss-sub" href="https://drive.google.com/file/d/1F6Egv-BlXdompWDMbAmQ8HOjtzCELcML/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                <span class="scroll-icon">❖</span> Unfurl Season V Poster <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="page-footer">
+              <span>Turn the leaf...</span>
+              <span class="folio">II / IV</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- HALAMAN 3 -->
+        <article class="page page-left mobile-page" data-page="2">
+          <div class="page-content">
+            <div style="width:100%;">
+              <p class="chapter-tag">Chapter II · The Order</p>
+            </div>
+
+            <div class="page-body-center" style="width:100%;">
+              <h2 class="section-title mystic-emboss">Four Pillars of the Realm</h2>
+              <p class="section-lead mystic-emboss-sub">An RP military academy forged by four living systems.</p>
+
+              <div class="pillar-list">
+                <button class="pillar-item" type="button" aria-expanded="false">
+                  <span class="pillar-head">
+                    <span>
+                      <span class="pillar-name mystic-emboss">01 · ABC System</span>
+                      <span class="pillar-sub mystic-emboss-sub">Attitude · Brain · Character</span>
+                    </span>
+                    <span class="pillar-toggle">＋</span>
+                  </span>
+                  <span class="pillar-body"><div><p class="mystic-emboss-sub">The core standard of every cadet: poise, sharp wit, and strength of character.</p></div></span>
                 </button>
 
-                <button class="system-card" type="button" aria-expanded="true">
-                  <span class="system-card-top"><span class="system-name">02 · Amfractus System</span><span class="active-tag">ACTIVE · S5</span></span>
-                  <span class="system-summary">The current recruitment season</span>
-                  <span class="system-detail"><div><p>Season 5 invites recruits into a <strong class="hl-crimson">dark fairytale labyrinth</strong> built around discovery, trials, and the courage to find a way through.</p></div></span>
+                <button class="pillar-item" type="button" aria-expanded="true">
+                  <span class="pillar-head">
+                    <span>
+                      <span class="pillar-name mystic-emboss">02 · Amfractus System</span>
+                      <span class="pillar-sub mystic-emboss-sub">Season V Recruitment Trial</span>
+                    </span>
+                    <span class="pill-badge">ACTIVE</span>
+                  </span>
+                  <span class="pillar-body"><div><p class="mystic-emboss-sub">A dark fairytale labyrinth testing courage, intuition, and perseverance.</p></div></span>
                 </button>
 
-                <button class="system-card" type="button" aria-expanded="false">
-                  <span class="system-card-top"><span class="system-name">03 · Bugstars Equipment</span><span class="system-index">＋</span></span>
-                  <span class="system-summary">Tactical gear · Operation deployment</span>
-                  <span class="system-detail"><div><p>A dedicated equipment framework for tactical readiness and specialized operation deployment.</p></div></span>
+                <button class="pillar-item" type="button" aria-expanded="false">
+                  <span class="pillar-head">
+                    <span>
+                      <span class="pillar-name mystic-emboss">03 · Bugstars Equipment</span>
+                      <span class="pillar-sub mystic-emboss-sub">Tactical Gear & Deployment</span>
+                    </span>
+                    <span class="pillar-toggle">＋</span>
+                  </span>
+                  <span class="pillar-body"><div><p class="mystic-emboss-sub">Specialized tactical arsenal built for field readiness and operations.</p></div></span>
                 </button>
 
-                <button class="system-card" type="button" aria-expanded="false">
-                  <span class="system-card-top"><span class="system-name">04 · Werewolf Game</span><span class="system-index">＋</span></span>
-                  <span class="system-summary">Deceptive strategy · Survival logic</span>
-                  <span class="system-detail"><div><p>A test of observation, deduction, alliances, and survival logic where every decision may change the outcome.</p></div></span>
+                <button class="pillar-item" type="button" aria-expanded="false">
+                  <span class="pillar-head">
+                    <span>
+                      <span class="pillar-name mystic-emboss">04 · Werewolf Game</span>
+                      <span class="pillar-sub mystic-emboss-sub">Deduction & Survival Logic</span>
+                    </span>
+                    <span class="pillar-toggle">＋</span>
+                  </span>
+                  <span class="pillar-body"><div><p class="mystic-emboss-sub">A battle of alliances, deception, and sharp deduction where every choice counts.</p></div></span>
                 </button>
               </div>
 
-              <aside class="recruitment-note">
-                <h3>Recruitment notice · Read carefully</h3>
-                <p>We are strictly looking for prospective <strong class="hl-gold">Shantirta members</strong> who are genuinely dedicated and have <strong class="hl-crimson">zero intention of L/H/D</strong> (Leave/Hiatus/Deactive). Must be able to mingle well and strictly obey TRIAMNU's rules.</p>
+              <aside class="oath-scroll">
+                <strong>The Shantirta Oath</strong>
+                <p class="mystic-emboss-sub">Seeking dedicated <b>Shantirta</b> recruits with <b>zero intention of L/H/D</b> (Leave/Hiatus/Deactive), ready to mingle and uphold every academy law.</p>
               </aside>
             </div>
-            <div class="page-footer-container">
-              <span class="page-number">03 / 04</span>
+
+            <div class="page-footer">
+              <span>Laws of the Maze</span>
+              <span class="folio">III / IV</span>
             </div>
           </div>
         </article>
 
-        <!-- PAGE 4 (HALAMAN AKHIR - BEBAS OVERLAP) -->
-        <article class="page page-right invitation-page mobile-page" data-page="3">
+        <!-- HALAMAN 4 -->
+        <article class="page page-right mobile-page" data-page="3">
           <div class="page-content">
-            <div>
-              <p class="page-kicker">The final passage</p>
-              <div class="invitation-mark" aria-hidden="true">✧</div>
-              <h2 class="invitation-title">Your story<br>begins here.</h2>
-              <p class="invitation-copy">Every labyrinth has an entrance. Few have the <strong class="hl-gold">resolve to walk its winding halls</strong>. If you are ready to earn your place, answer the call.</p>
+            <div style="width:100%;">
+              <p class="chapter-tag" style="display:flex; justify-content:center;">Epilogue</p>
+            </div>
 
-              <div class="contact-list">
-                <a class="contact-card" href="https://wa.me/message/VSEFD7ODBG33L1" target="_blank" rel="noopener noreferrer">
-                  <span><strong>CONTACT THE I GRIMM </strong><span>Begin your application</span></span>
-                  <span class="contact-arrow" aria-hidden="true">↗</span>
+            <div class="page-body-center" style="width:100%;">
+              <div class="epilogue-art">
+                <img src="compass-key.jpg" alt="Kompas dan Kunci Dongeng" onerror="this.parentElement.style.display='none'">
+              </div>
+
+              <h2 class="epilogue-title mystic-emboss">Your Tale Begins Here</h2>
+              <p class="epilogue-copy mystic-emboss-sub">
+                Every labyrinth has an entrance, yet few possess the resolve to walk it. Answer the call of the Grimms.
+              </p>
+
+              <div class="grimm-links">
+                <a class="grimm-btn" href="https://wa.me/message/VSEFD7ODBG33L1" target="_blank" rel="noopener noreferrer">
+                  <span>
+                    <strong class="mystic-emboss">SUMMON THE I GRIMM</strong>
+                    <small class="mystic-emboss-sub">Step through the first gate</small>
+                  </span>
+                  <span class="grimm-quill">✒</span>
                 </a>
-                <a class="contact-card" href="https://wa.me/message/AFQZUY7VE3N3N1" target="_blank" rel="noopener noreferrer">
-                  <span><strong>CONTACT THE II GRIMM</strong><span>Begin your application</span></span>
-                  <span class="contact-arrow" aria-hidden="true">↗</span>
+
+                <a class="grimm-btn" href="https://wa.me/message/AFQZUY7VE3N3N1" target="_blank" rel="noopener noreferrer">
+                  <span>
+                    <strong class="mystic-emboss">SUMMON THE II GRIMM</strong>
+                    <small class="mystic-emboss-sub">Step through the second gate</small>
+                  </span>
+                  <span class="grimm-quill">✒</span>
                 </a>
               </div>
             </div>
-            <div>
-              <p class="copyright">All lists and systems used are entirely our team's original creative work. <strong class="hl-crimson">Copying is prohibited.</strong></p>
-              <div class="page-footer-container">
-                <span class="page-number">THE END · OR THE BEGINNING?</span>
+
+            <div style="width:100%;">
+              <p class="copyright-note mystic-emboss-sub">All systems & lore are original works of TRIAMNU. <b>Copying is prohibited.</b></p>
+              <div class="page-footer">
+                <span>Finis · Or Beginning?</span>
+                <span class="folio">IV / IV</span>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- Decorative dark inside-cover panel on desktop -->
-        <aside class="page page-right" id="insideCover" aria-hidden="true">
-          <div class="dark-panel">
-            <div class="small-caps">The archive of TRIAMNU</div>
-            <svg class="labyrinth-art" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#B89A5B" stroke-width="1.15" opacity=".8">
-                <path d="M160 22L276 89V231L160 298L44 231V89L160 22Z"/>
-                <path d="M160 48L253 102V218L160 272L67 218V102L160 48Z" opacity=".65"/>
-                <path d="M160 74L231 115V205L160 246L89 205V115L160 74Z"/>
-                <path d="M160 98L210 127V193L160 222L110 193V127L160 98Z" opacity=".75"/>
-                <path d="M160 120L190 137V183L160 200L130 183V137L160 120Z"/>
-                <path d="M160 22V74M276 89L231 115M276 231L231 205M160 298V246M44 231L89 205M44 89L89 115" opacity=".45"/>
-                <path d="M160 22V120M276 89H190M276 231H190M160 298V200M44 231H130M44 89H130" opacity=".3"/>
-              </g>
-              <circle cx="160" cy="160" r="5" fill="#B89A5B"/>
-              <path d="M160 8V22M160 298V312M30 160H44M276 160H290" stroke="#D6BD80" stroke-width="1.5"/>
-            </svg>
-            <blockquote class="dark-quote">“Not all who enter are lost. Some are simply being tested.”<span>— The Labyrinth's old inscription</span></blockquote>
-            <div class="panel-bottom">TRIAMNU · AMFRACTUS · SEASON V</div>
-          </div>
-        </aside>
       </div>
     </section>
 
     <nav class="book-nav" aria-label="Storybook navigation">
-      <button class="nav-button" id="prevPage" type="button" disabled><span aria-hidden="true">←</span> Previous</button>
-      <span class="page-indicator" id="pageIndicator" aria-live="polite">01 — 04</span>
-      <button class="nav-button" id="nextPage" type="button">Next <span aria-hidden="true">→</span></button>
+      <button class="nav-button" id="prevPage" type="button" disabled>← Previous</button>
+      <span class="page-indicator" id="pageIndicator" aria-live="polite">01 — 02</span>
+      <button class="nav-button" id="nextPage" type="button">Next →</button>
     </nav>
-    <p class="mobile-hint">You can also swipe left or right to turn the page.</p>
+    <p class="mobile-hint">Swipe left or right to turn the page</p>
   </main>
 
   <script>
@@ -966,24 +942,18 @@
         if (mobileQuery.matches) {
           pages.forEach((page, index) => {
             page.classList.toggle("is-active", index === currentPage);
-            page.style.display = index === currentPage ? "block" : "none";
+            page.style.display = index === currentPage ? "flex" : "none";
           });
           indicator.textContent = `${String(currentPage + 1).padStart(2, "0")} — 04`;
         } else {
           pages.forEach(page => { page.style.display = "none"; });
           if (currentPage === 0) {
-            pages[0].style.display = "block";
-            pages[1].style.display = "block";
-            pages[0].style.gridColumn = "1";
-            pages[1].style.gridColumn = "2";
-            document.getElementById("insideCover").style.display = "none";
+            pages[0].style.display = "flex";
+            pages[1].style.display = "flex";
             indicator.textContent = "01 — 02";
           } else {
-            pages[2].style.display = "block";
-            pages[3].style.display = "block";
-            pages[2].style.gridColumn = "1";
-            pages[3].style.gridColumn = "2";
-            document.getElementById("insideCover").style.display = "none";
+            pages[2].style.display = "flex";
+            pages[3].style.display = "flex";
             indicator.textContent = "03 — 04";
           }
         }
@@ -1008,43 +978,43 @@
         renderPage();
       });
 
-      book.addEventListener("touchstart", event => {
+      book.addEventListener("touchstart", e => {
         if (!mobileQuery.matches) return;
-        touchStartX = event.changedTouches[0].clientX;
-        touchStartY = event.changedTouches[0].clientY;
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
       }, { passive: true });
 
-      book.addEventListener("touchend", event => {
+      book.addEventListener("touchend", e => {
         if (!mobileQuery.matches) return;
-        const deltaX = event.changedTouches[0].clientX - touchStartX;
-        const deltaY = event.changedTouches[0].clientY - touchStartY;
-        if (Math.abs(deltaX) > 55 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
-          goToPage(deltaX < 0 ? 1 : -1);
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          goToPage(dx < 0 ? 1 : -1);
         }
       }, { passive: true });
 
-      document.addEventListener("keydown", event => {
-        if (event.key === "ArrowRight") goToPage(1);
-        if (event.key === "ArrowLeft") goToPage(-1);
+      document.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") goToPage(1);
+        if (e.key === "ArrowLeft") goToPage(-1);
       });
 
-      document.querySelectorAll(".system-card").forEach(card => {
-        card.addEventListener("click", () => {
-          const expanded = card.getAttribute("aria-expanded") === "true";
-          card.setAttribute("aria-expanded", String(!expanded));
-          const index = card.querySelector(".system-index");
-          if (index) index.textContent = expanded ? "＋" : "−";
+      document.querySelectorAll(".pillar-item").forEach(item => {
+        item.addEventListener("click", () => {
+          const expanded = item.getAttribute("aria-expanded") === "true";
+          item.setAttribute("aria-expanded", String(!expanded));
+          const toggle = item.querySelector(".pillar-toggle");
+          if (toggle) toggle.textContent = expanded ? "＋" : "−";
         });
       });
 
       const emberHost = document.getElementById("embers");
-      for (let i = 0; i < 22; i++) {
+      for (let i = 0; i < 20; i++) {
         const ember = document.createElement("span");
         ember.className = "ember";
         ember.style.setProperty("--left", `${Math.random() * 100}%`);
-        ember.style.setProperty("--duration", `${9 + Math.random() * 13}s`);
+        ember.style.setProperty("--duration", `${10 + Math.random() * 12}s`);
         ember.style.setProperty("--delay", `${-Math.random() * 20}s`);
-        ember.style.setProperty("--sway", `${-35 + Math.random() * 70}px`);
+        ember.style.setProperty("--sway", `${-30 + Math.random() * 60}px`);
         emberHost.appendChild(ember);
       }
 
